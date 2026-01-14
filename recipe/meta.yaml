@@ -1,0 +1,39 @@
+{% set name = "llvm-static-example" %}
+{% set version = "1.0.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  path: ../
+
+build:
+  number: 0
+  skip: true  # [win]
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - cmake
+    - make
+  host:
+    - llvmdev
+    - clangdev
+    - zlib
+
+test:
+  commands:
+    - llvm-static-example
+
+about:
+  license: GPL3
+  license_file: ../LICENSE
+  summary: 'Minimal C++ program using LLVM'
+  description: |
+    This package demonstrates how to build a minimal C++ program
+    that links against Clang and LLVM statically.
+
+extra:
+  recipe-maintainers:
+    - vepadulano
