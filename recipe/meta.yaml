@@ -25,6 +25,8 @@ requirements:
 test:
   commands:
     - llvm-static-example
+    - ldd $(which llvm-static-example)
+    - du -sh $(which llvm-static-example)
 
 about:
   license: GPL3
